@@ -12,8 +12,18 @@ function renderApp() {
   ]);
 
   const mainElement = createElement("main", { className: "main" }, [
-    createCharacterCard({ name: "Ethan" }),
-    createCharacterCard({ name: "Rick" }),
+    createCharacterCard({
+      name: "Ethan",
+      subtitle: "Unknown - Human",
+      location: "Earth (C-137)",
+      firstseen: "Anatomy Park",
+    }),
+    createCharacterCard({
+      name: "Evil Beth Clone",
+      subtitle: "Dead - Human",
+      location: "Earth (C-137)",
+      firstseen: "Meeseeks and Destroy",
+    }),
   ]);
 
   const footerElement = createElement("footer", { className: "footer" }, [

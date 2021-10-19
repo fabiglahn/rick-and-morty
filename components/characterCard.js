@@ -1,7 +1,12 @@
 import { createElement } from "../lib/elements.js";
 import styles from "./characterCard.module.css";
 
-export default function createCharacterCard({ name }) {
+export default function createCharacterCard({
+  name,
+  subtitle,
+  location,
+  firstseen,
+}) {
   const characterCard = createElement(
     "article",
     {
@@ -10,15 +15,19 @@ export default function createCharacterCard({ name }) {
     [
       createElement("img", { src: "../assets/Ethan.jpeg" }),
       createElement("h2", { className: styles.h2, textContent: name }),
-      createElement("h3", { className: styles.h3 }, ["Unknown - Human"]),
+      createElement("h3", { className: styles.h3, textContent: subtitle }),
       createElement("span", { className: styles.cardText }, [
         "Last known location:",
       ]),
-      createElement("p", { className: styles.cardSmallText }, [
-        "Earth (C-137)",
-      ]),
+      createElement("p", {
+        className: styles.cardSmallText,
+        textContent: location,
+      }),
       createElement("span", { className: styles.cardText }, ["First seen in:"]),
-      createElement("p", { className: styles.cardSmallText }, ["Anatomy Park"]),
+      createElement("p", {
+        className: styles.cardSmallText,
+        textContent: firstseen,
+      }),
     ]
   );
   return characterCard;
