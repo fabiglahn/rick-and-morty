@@ -13,7 +13,7 @@
   --color-main-text: white;
   --color-background-header: white;
   --color-background-main: rgb(42, 45, 50);
-  --color-background-footer: rgb (38, 40, 45);
+  --color-background-footer: rgb(38, 40, 45);
   --color-background-card: rgb(62, 63, 68);
 
   /* FONTS */
@@ -38,18 +38,33 @@ h6 {
   font-family: var(--font-family-text);
 }
 
+h1 {
+  font-weight: 800;
+}
+
 .header {
   background-color: var(--color-background-header);
   color: var(--color-header-text);
   text-align: center;
+  padding: 4rem 2rem;
 }
 
 .main {
   background-color: var(--color-background-main);
   color: var(--color-main-text);
+  padding: 2rem 2rem;
+  text-align: center;
 }
 
 .footer {
   background-color: var(--color-background-footer);
   color: var(--color-main-text);
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.card {
+  background-color: var(--color-background-header);
+  height: 20vh;
+  weight: 20vh;
 }
