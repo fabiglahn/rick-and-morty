@@ -11,15 +11,16 @@ function renderApp() {
     }),
   ]);
 
-  const mainElement = createElement("main", { className: "main" });
-
-  const characterCard = createCharacterCard();
+  const mainElement = createElement("main", { className: "main" }, [
+    createCharacterCard({ name: "Ethan" }),
+    createCharacterCard({ name: "Rick" }),
+  ]);
 
   const footerElement = createElement("footer", { className: "footer" }, [
     createElement("p", { textContent: "Footer content" }),
   ]);
 
-  appElement.append(headerElement, mainElement, characterCard, footerElement);
+  appElement.append(headerElement, mainElement, footerElement);
 }
 
 renderApp();
