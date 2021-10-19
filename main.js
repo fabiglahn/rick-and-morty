@@ -1,6 +1,6 @@
 import "./style.css";
 import { createElement } from "./lib/elements.js";
-import { createCardComponent } from "./lib/card";
+import createCharacterCard from "./components/characterCard";
 
 function renderApp() {
   const appElement = document.querySelector("#app");
@@ -11,17 +11,15 @@ function renderApp() {
     }),
   ]);
 
-  const mainElement = createElement("main", { className: "main" }, [
-    createElement("p", { textContent: "Still developing..." }),
-  ]);
+  const mainElement = createElement("main", { className: "main" });
 
-  const cardComponent = createCardComponent();
+  const characterCard = createCharacterCard();
 
   const footerElement = createElement("footer", { className: "footer" }, [
     createElement("p", { textContent: "Footer content" }),
   ]);
 
-  appElement.append(headerElement, mainElement, cardComponent, footerElement);
+  appElement.append(headerElement, mainElement, characterCard, footerElement);
 }
 
 renderApp();
