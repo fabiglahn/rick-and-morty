@@ -1,8 +1,70 @@
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  /* COLORS */
+  --color-primary: rgb(221, 124, 67);
+  --color-header-text: rgb(38, , 40, 45);
+  --color-main-text: white;
+  --color-background-header: white;
+  --color-background-main: rgb(42, 45, 50);
+  --color-background-footer: rgb(38, 40, 45);
+  --color-background-card: rgb(62, 63, 68);
+
+  /* FONTS */
+  --font-family-text: "Open Sans", sans-serif;
+
+  /* BORDERS */
+  --border-radius: 15px;
+}
+
+body {
+  font-family: var(--font-family-text);
+  margin: 0;
+  background-color: var(--color-background-main);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-text);
+}
+
+h1 {
+  font-weight: 800;
+}
+
+.header {
+  background-color: var(--color-background-header);
+  color: var(--color-header-text);
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  padding: 4rem 2rem;
+}
+
+.main {
+  background-color: var(--color-background-main);
+  color: var(--color-main-text);
+  padding: 2rem 2rem;
+  text-align: center;
+}
+
+.footer {
+  background-color: var(--color-background-footer);
+  color: var(--color-main-text);
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.card {
+  background-color: var(--color-background-header);
+  height: 20vh;
+  weight: 20vh;
 }
