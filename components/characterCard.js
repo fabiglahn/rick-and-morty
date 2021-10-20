@@ -2,10 +2,12 @@ import { createElement } from "../lib/elements.js";
 import styles from "./characterCard.module.css";
 
 export default function createCharacterCard({
+  image,
   name,
-  subtitle,
+  status,
+  species,
   location,
-  firstseen,
+  episode,
 }) {
   const characterCard = createElement(
     "article",
@@ -13,25 +15,34 @@ export default function createCharacterCard({
       className: styles.card,
     },
     [
-      createElement("img", { src: "../assets/Ethan.jpeg" }),
+      createElement("img", {
+        className: styles.img,
+        src: image,
+        alt: "",
+      }),
       createElement("h2", { className: styles.h2, textContent: name }),
-      createElement("h3", { className: styles.h3, textContent: subtitle }),
+      createElement("h3", {
+        className: styles.h3,
+        textContent: status + " - " + species,
+      }),
       createElement("span", { className: styles.cardText }, [
         "Last known location:",
       ]),
       createElement("p", {
         className: styles.cardSmallText,
-        textContent: location,
+        textContent: location.name,
       }),
       createElement("span", { className: styles.cardText }, ["First seen in:"]),
       createElement("p", {
         className: styles.cardSmallText,
-        textContent: firstseen,
+        textContent: episode[0],
       }),
     ]
   );
   return characterCard;
 }
+
+/*Variable 1 + “and” + Variable 2*/
 
 /* const cardImg = createElement("img", { src: "../assets/Ethan.jpeg" });
 
