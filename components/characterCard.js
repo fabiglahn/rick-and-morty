@@ -9,6 +9,17 @@ export default function createCharacterCard({
   location,
   episode,
 }) {
+  const firstEpisode = episode[0];
+
+  const firstEpisodeElement = createElement("p", { textContent: firstEpisode });
+
+  const lastLocation = location[0];
+
+  const lastLocationElement = createElement("p", {
+    className: styles.cardSmallText,
+    textContent: location.name,
+  });
+
   const characterCard = createElement(
     "article",
     {
@@ -28,17 +39,28 @@ export default function createCharacterCard({
       createElement("span", { className: styles.cardText }, [
         "Last known location:",
       ]),
-      createElement("p", {
+      lastLocationElement,
+      /* createElement("p", {
         className: styles.cardSmallText,
         textContent: location.name,
-      }),
+      }), */
       createElement("span", { className: styles.cardText }, ["First seen in:"]),
-      createElement("p", {
-        className: styles.cardSmallText,
-        textContent: episode[0],
-      }),
+      firstEpisodeElement,
     ]
   );
+
+  fetch(lastLocation)
+    .then((response) => response.json())
+    .then((body) => {
+      lastLocationElement.textContent = body.name;
+    });
+
+  fetch(firstEpisode)
+    .then((response) => response.json())
+    .then((body) => {
+      firstEpisodeElement.textContent = body.name;
+    });
+
   return characterCard;
 }
 

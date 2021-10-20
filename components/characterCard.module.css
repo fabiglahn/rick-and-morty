@@ -10,7 +10,7 @@
 }
 
 .img {
-  height: 100%;
+  height: auto;
   width: 100%;
   grid-row: 1/7;
   border-radius: 0.6rem;
