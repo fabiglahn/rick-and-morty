@@ -1,8 +1,9 @@
 import "./style.css";
 import { createElement } from "./lib/elements.js";
-import { createCardComponent } from "./lib/card";
+import createCharacterCard from "./components/characterCard";
+import fetchCharacters from "./lib/fetchCharacter";
 
-function renderApp() {
+async function renderApp() {
   const appElement = document.querySelector("#app");
 
   const headerElement = createElement("header", { className: "header" }, [
@@ -11,17 +12,23 @@ function renderApp() {
     }),
   ]);
 
-  const mainElement = createElement("main", { className: "main" }, [
-    createElement("p", { textContent: "Still developing..." }),
-  ]);
+  const characters = await fetchCharacters();
 
-  const cardComponent = createCardComponent();
+  const characterCards = characters.map((character) =>
+    createCharacterCard(character)
+  );
+
+  const mainElement = createElement(
+    "main",
+    { className: "main" },
+    characterCards
+  );
 
   const footerElement = createElement("footer", { className: "footer" }, [
     createElement("p", { textContent: "Footer content" }),
   ]);
 
-  appElement.append(headerElement, mainElement, cardComponent, footerElement);
+  appElement.append(headerElement, mainElement, footerElement);
 }
 
 renderApp();
