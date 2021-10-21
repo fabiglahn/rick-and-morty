@@ -13,8 +13,6 @@ export default function createCharacterCard({
 
   const firstEpisodeElement = createElement("p", { textContent: firstEpisode });
 
-  const lastLocation = location[0];
-
   const lastLocationElement = createElement("p", {
     className: styles.cardSmallText,
     textContent: location.name,
@@ -49,12 +47,6 @@ export default function createCharacterCard({
     ]
   );
 
-  fetch(lastLocation)
-    .then((response) => response.json())
-    .then((body) => {
-      lastLocationElement.textContent = body.name;
-    });
-
   fetch(firstEpisode)
     .then((response) => response.json())
     .then((body) => {
@@ -63,6 +55,13 @@ export default function createCharacterCard({
 
   return characterCard;
 }
+
+/* fetch(lastLocation)
+    .then((response) => response.json())
+    .then((body) => {
+      lastLocationElement.textContent = body.name;
+    });
+ */
 
 /*Variable 1 + “and” + Variable 2*/
 

@@ -1,6 +1,7 @@
 import "./style.css";
 import { createElement } from "./lib/elements.js";
 import createCharacterCard from "./components/characterCard";
+import fetchCharacters from "./lib/fetchCharacter";
 
 async function renderApp() {
   const appElement = document.querySelector("#app");
@@ -11,13 +12,29 @@ async function renderApp() {
     }),
   ]);
 
-  const response = await fetch("https://rickandmortyapi.com/api/character");
-  const body = await response.json();
-  const characters = body.results;
-  console.log(body);
+  const characters = await fetchCharacters();
 
-  //Array Mapping for the CharacterCards
-  /*   const characters = [
+  const characterCards = characters.map((character) =>
+    createCharacterCard(character)
+  );
+
+  const mainElement = createElement(
+    "main",
+    { className: "main" },
+    characterCards
+  );
+
+  const footerElement = createElement("footer", { className: "footer" }, [
+    createElement("p", { textContent: "Footer content" }),
+  ]);
+
+  appElement.append(headerElement, mainElement, footerElement);
+}
+
+renderApp();
+
+//Array Mapping for the CharacterCards
+/*   const characters = [
     {
       imgSrc: "/assets/Ethan.jpeg",
       name: "Ethan",
@@ -47,25 +64,6 @@ async function renderApp() {
       firstseen: "Total Rickall",
     },
   ]; */
-
-  const characterCards = characters.map((character) =>
-    createCharacterCard(character)
-  );
-
-  const mainElement = createElement(
-    "main",
-    { className: "main" },
-    characterCards
-  );
-
-  const footerElement = createElement("footer", { className: "footer" }, [
-    createElement("p", { textContent: "Footer content" }),
-  ]);
-
-  appElement.append(headerElement, mainElement, footerElement);
-}
-
-renderApp();
 
 /* [
   createCharacterCard({
