@@ -1,8 +1,8 @@
 import "./style.css";
 import { createElement } from "./lib/elements.js";
-import { createCardComponent } from "./lib/card";
+import createCharacterCard from "./components/characterCard";
 
-function renderApp() {
+async function renderApp() {
   const appElement = document.querySelector("#app");
 
   const headerElement = createElement("header", { className: "header" }, [
@@ -11,17 +11,75 @@ function renderApp() {
     }),
   ]);
 
-  const mainElement = createElement("main", { className: "main" }, [
-    createElement("p", { textContent: "Still developing..." }),
-  ]);
+  const response = await fetch("https://rickandmortyapi.com/api/character");
+  const body = await response.json();
+  const characters = body.results;
+  console.log(body);
 
-  const cardComponent = createCardComponent();
+  //Array Mapping for the CharacterCards
+  /*   const characters = [
+    {
+      imgSrc: "/assets/Ethan.jpeg",
+      name: "Ethan",
+      subtitle: "Unknown - Human",
+      location: "Earth (C-137)",
+      firstseen: "Anatomy Park",
+    },
+    {
+      imgSrc: "/assets/Doopidoo.jpeg",
+      name: "Doopidoo",
+      subtitle: "Alive - Animal",
+      location: "unknown",
+      firstseen: "Close Rick-counters of the Rick Kid",
+    },
+    {
+      imgSrc: "/assets/BabyPoopybutthole.jpeg",
+      name: "Baby Poopybutthole",
+      subtitle: "Alive - Poopybutthole",
+      location: "unknown",
+      firstseen: "The Rickchurian Mortydate",
+    },
+    {
+      imgSrc: "/assets/MrsRefrigerator.jpeg",
+      name: "Mrs. Refrigerator",
+      subtitle: "Dead - Alien",
+      location: "Earth (Replacement Dimension)",
+      firstseen: "Total Rickall",
+    },
+  ]; */
+
+  const characterCards = characters.map((character) =>
+    createCharacterCard(character)
+  );
+
+  const mainElement = createElement(
+    "main",
+    { className: "main" },
+    characterCards
+  );
 
   const footerElement = createElement("footer", { className: "footer" }, [
     createElement("p", { textContent: "Footer content" }),
   ]);
 
-  appElement.append(headerElement, mainElement, cardComponent, footerElement);
+  appElement.append(headerElement, mainElement, footerElement);
 }
 
 renderApp();
+
+/* [
+  createCharacterCard({
+    imgSrc: "/assets/Ethan.jpeg",
+    name: "Ethan",
+    subtitle: "Unknown - Human",
+    location: "Earth (C-137)",
+    firstseen: "Anatomy Park",
+  }),
+  createCharacterCard({
+    imgSrc: "/assets/Ethan.jpeg",
+    name: "Evil Beth Clone",
+    subtitle: "Dead - Human",
+    location: "Earth (C-137)",
+    firstseen: "Meeseeks and Destroy",
+  }),
+]);*/
