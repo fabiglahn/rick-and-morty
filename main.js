@@ -10,14 +10,18 @@ async function renderApp() {
   const searchBar = createSearchElement(handleSubmit);
 
   async function handleSubmit(searchQuery) {
-    const url = "https://rickandmortyapi.com/api/character/?name=";
-    const characterSearch = await fetchCharacters(url + searchQuery);
-    const searchCards = characterSearch.map((currywurst) =>
-      createCharacterCard(currywurst)
+    console.log(searchQuery);
+    const response = await fetch(
+      `https://rickandmortyapi.com/api/character/?name=${searchQuery}`
     );
-    mainElement.prepend(searchCards[0]);
-    //fetch specific from API
-    //Add new characterCards to main element
+    const body = await response.json();
+    const characters = body.results;
+    const characterElements = characters.map((character) =>
+      createCharacterCard(character)
+    );
+    console.log(characterElements);
+    mainElement.innerHTML = "";
+    mainElement.append(...characterElements);
   }
 
   const headerElement = createElement("header", { className: "header" }, [
