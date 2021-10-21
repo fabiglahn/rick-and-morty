@@ -8,15 +8,13 @@
 
 :root {
   /* COLORS */
-  --color-primary: #d9886a;
-  --color-header-text: #d9886a;
+  --color-primary: rgb(221, 124, 67);
+  --color-header-text: rgb(38, , 40, 45);
   --color-main-text: white;
-  --color-text-secondary: #085942;
-  --color-text-tertiary: #02734a;
   --color-background-header: white;
-  --color-background-main: #085942;
-  --color-background-footer: #02734a;
-  --color-background-card: white;
+  --color-background-main: rgb(42, 45, 50);
+  --color-background-footer: rgb(38, 40, 45);
+  --color-background-card: rgb(62, 63, 68);
 
   /* FONTS */
   --font-family-text: "Open Sans", sans-serif;
@@ -54,7 +52,7 @@ h1 {
 .main {
   background-color: var(--color-background-main);
   color: var(--color-main-text);
-  padding: 2rem;
+  padding: 2rem 2rem;
   text-align: center;
 }
 
@@ -65,26 +63,8 @@ h1 {
   padding: 4rem 2rem;
 }
 
-/* Color Theme Swatches in Hex 
-.Edifício-Vinhático-1-hex { color: #2E4559; }
-.Edifício-Vinhático-2-hex { color: #4A6D8C; }
-.Edifício-Vinhático-3-hex { color: #6A8AA6; }
-.Edifício-Vinhático-4-hex { color: #A9C6D9; }
-.Edifício-Vinhático-5-hex { color: #8C694A; } */
-
-/* Color Theme Swatches in Hex */
-.La-Scala-Ristorante-1-hex {
-  color: #085942;
-}
-.La-Scala-Ristorante-2-hex {
-  color: #0e7356;
-}
-.La-Scala-Ristorante-3-hex {
-  color: #02734a;
-}
-.La-Scala-Ristorante-4-hex {
-  color: #f2c6a0;
-}
-.La-Scala-Ristorante-5-hex {
-  color: #d9886a;
+.card {
+  background-color: var(--color-background-header);
+  height: 20vh;
+  weight: 20vh;
 }
