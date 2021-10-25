@@ -10,7 +10,6 @@ async function renderApp() {
   const searchBar = createSearchElement(handleSubmit);
 
   async function handleSubmit(searchQuery) {
-    console.log(searchQuery);
     const response = await fetch(
       `https://rickandmortyapi.com/api/character/?name=${searchQuery}`
     );
@@ -19,7 +18,6 @@ async function renderApp() {
     const characterElements = characters.map((character) =>
       createCharacterCard(character)
     );
-    console.log(characterElements);
     mainElement.innerHTML = "";
     mainElement.append(...characterElements);
   }

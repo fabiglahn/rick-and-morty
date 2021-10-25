@@ -2,9 +2,16 @@ import { createElement } from "../lib/elements.js";
 import styles from "./searchComponent.module.css";
 
 export default function createSearchElement(onSubmit) {
+  let timeoutId;
   const textInput = createElement("input", {
     placeholder: "Find a character",
     className: styles.input,
+    oninput: () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        onSubmit(textInput.value);
+      }, 300);
+    },
   });
 
   const submitButton = createElement(
