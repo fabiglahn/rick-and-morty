@@ -1,0 +1,14 @@
+.submitButton {
+  color: var(--color-main-text);
+  background-color: var(--color-text-secondary);
+  margin: 0.5rem;
+}
+
+.search {
+  background-color: var(--color-primary);
+  color: var(--color-text-secondary);
+  padding: 0.3rem;
+  display: grid;
+  place-items: center;
+  grid-auto-flow: column;
+}
